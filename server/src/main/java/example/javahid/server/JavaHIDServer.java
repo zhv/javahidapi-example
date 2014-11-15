@@ -44,7 +44,7 @@ public class JavaHIDServer {
 			XmlRpcServer xmlRpcServer = webServer.getXmlRpcServer();
 			PropertyHandlerMapping phm = new PropertyHandlerMapping();
 			phm.setVoidMethodEnabled(true);
-			phm.addHandler(HIDService.class.getSimpleName(), HIDServiceImpl.class);
+			phm.addHandler(HIDService.class.getName(), HIDServiceImpl.class);
 			xmlRpcServer.setHandlerMapping(phm);
 			webServer.start();
 			System.out.println("Started successfully.");

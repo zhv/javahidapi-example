@@ -1,6 +1,10 @@
 package example.javahid;
 
-public class HIDDeviceReference {
+import java.io.Serializable;
+
+public class HIDDeviceReference implements Serializable {
+	private static final long serialVersionUID = -2208885320944139851L;
+
 	private int vendorId;
 	private int productId;
 	private String serialNumber;
