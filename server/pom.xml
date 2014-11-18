@@ -10,6 +10,7 @@
 	<artifactId>javahidapi-example.server</artifactId>
 	<name>Java HID API Example Server</name>
 	<build>
+		<finalName>JavaHIDServer</finalName>
 		<resources>
 			<resource>
 				<directory>${project.basedir}/src/main/resources</directory>
@@ -36,10 +37,9 @@
 						</goals>
 						<configuration>
 							<transformers>
-								<transformer
-									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
 									<manifestEntries>
-										<Main-Class>javahid.JavaHIDServerMain</Main-Class>
+										<Main-Class>example.javahid.server.JavaHIDServerMain</Main-Class>
 									</manifestEntries>
 								</transformer>
 							</transformers>

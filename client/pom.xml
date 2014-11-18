@@ -10,6 +10,7 @@
 	<artifactId>javahidapi-example.client</artifactId>
 	<name>Java HID API Example Client</name>
 	<build>
+		<finalName>JavaHIDClient</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
