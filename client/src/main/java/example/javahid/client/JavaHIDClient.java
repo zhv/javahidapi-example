@@ -27,7 +27,7 @@ public class JavaHIDClient {
 			URL serverUrl = (URL) line.getParsedOptionValue("url");
 			HIDService service = createService(serverUrl);
 			if (line.hasOption("device-info")) {
-				for (String s : service.getDeviceInfo()) {
+				for (Object s : service.getDeviceInfo()) {
 					System.out.println(s);
 				}
 			} else if (line.hasOption("read")) {
@@ -118,6 +118,8 @@ public class JavaHIDClient {
 	private HIDService createService(URL serverUrl) {
 		XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
 		config.setServerURL(serverUrl);
+		config.setEnabledForExtensions(true);
+		config.setContentLengthOptional(true);
 		XmlRpcClient client = new XmlRpcClient();
 		client.setConfig(config);
 		ClientFactory factory = new ClientFactory(client);

@@ -36,11 +36,11 @@ public class HIDDeviceReference implements Serializable {
 	}
 
 	public void setSerialNumber(String serialNumber) {
-		this.serialNumber = serialNumber;
+		this.serialNumber = "null".equals(serialNumber) ? null : serialNumber;
 	}
 
 	@Override
 	public String toString() {
-		return "" + vendorId + ":" + productId + "#" + serialNumber;
+		return "" + vendorId + ":" + productId + "#" + ("null".equals(serialNumber) ? "<null>" : serialNumber);
 	}
 }

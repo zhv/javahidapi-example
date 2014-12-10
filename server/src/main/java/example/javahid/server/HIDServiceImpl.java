@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
+import com.codeminders.hidapi.ClassPathLibraryLoader;
 import com.codeminders.hidapi.HIDDevice;
 import com.codeminders.hidapi.HIDDeviceInfo;
 import com.codeminders.hidapi.HIDDeviceNotFoundException;
@@ -13,6 +14,8 @@ import example.javahid.HIDDeviceReference;
 import example.javahid.HIDService;
 
 public class HIDServiceImpl implements HIDService {
+	private Logger LOG = Logger.getLogger(getClass());
+
 	@Override
 	public String[] getDeviceInfo() {
 		HIDManager manager = createManager();
@@ -56,6 +59,7 @@ public class HIDServiceImpl implements HIDService {
 	}
 
 	private HIDManager createManager() {
+		ClassPathLibraryLoader.loadNativeHIDLibrary();
 		HIDManager manager = null;
 		try {
 			manager = HIDManager.getInstance();
@@ -71,6 +75,7 @@ public class HIDServiceImpl implements HIDService {
 	private HIDDevice openDevice(HIDManager manager, HIDDeviceReference deviceReference) {
 		HIDDevice device = null;
 		try {
+			LOG.debug("Trying to open device by id, " + deviceReference);
 			device = manager.openById(deviceReference.getVendorId(), deviceReference.getProductId(),
 					deviceReference.getSerialNumber());
 			return device;
